@@ -107,7 +107,7 @@ class Solver(object):
             self.unet = AttU_Net(img_ch=3, n_classes = self.n_classes)
         elif self.model_type == 'R2AttU_Net':
             self.unet = R2AttU_Net(img_ch=3,t=self.t, n_classes = self.n_classes)
-        elif self.model_type in ['UNet','SAFS','SK','BAM','SE','CBAM', 'BAM-SAFS','CBAM-SAFS','SE-SAFS','SK-SAFS', 'SK-BAM-SAFS']:
+        elif self.model_type in ['UNet','SAFS','SK','BAM','SE','CBAM', 'BAM-SAFS','CBAM-SAFS','SE-SAFS','SK-SAFS', 'SK-BAM-SAFS', 'SK-SE-SAFS']:
             self.unet = UNet(n_classes=self.n_classes, \
                 init_features=self.width, \
                 reduction_ratio=self.reduction_ratio, \
@@ -423,10 +423,8 @@ class Solver(object):
                         metric(SR,mask, label = self.category)
                         # metric(SR,mask)
 
-
-        f = open(os.path.join(self.result_path,'result_monuseg.csv'), 'a', encoding='utf-8', newline='')
-        wr = csv.writer(f)
-        print([float(metric.value()) for metric in self.metrics])
-        wr.writerow([self.model_type, self.loss_type, self.level, self.size, self.depth, self.width, \
-            self.n_classes, self.alpha, self.gamma, self.n_head, self.fold]+[float(metric.value()) for metric in self.metrics])
-        f.close()
+        with open(os.path.join(self.result_path, 'result_FIVES.csv'), 'a', encoding='utf-8', newline='') as f:
+            wr = csv.writer(f)
+            print([float(metric.value()) for metric in self.metrics])
+            wr.writerow([self.model_type, self.loss_type, self.level, self.size, self.depth, self.width, \
+                self.n_classes, self.alpha, self.gamma, self.n_head, self.fold]+[float(metric.value()) for metric in self.metrics])

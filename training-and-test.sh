@@ -18,17 +18,18 @@
 # python main.py --model_type='SS4' --n_head=4 --is_scale_selective='0' --mode='test'
 # python main.py --model_type='SAtt' --n_head=2 --is_scale_selective='0'
 # python main.py --model_type='SAtt' --n_head=2 --is_scale_selective='0' --mode='test'
+python main.py --model_type='SK-BAM-SAFS' --conv_type='sk' --reduction_ratio=8 --att_mode='bam' --loss_type='nll+ssim+iou' --is_scale_selective='1' --n_head=3
 # comparison fusion methods
-python main.py --model_type='SE-SAFS' --reduction_ratio=8 --att_mode='se' --loss_type='nll+ssim+iou'
-python main.py --model_type='CBAM-SAFS' --reduction_ratio=8 --att_mode='cbam' --loss_type='nll+ssim+iou'
-python main.py --model_type='BAM-SAFS' --reduction_ratio=8 --att_mode='bam' --loss_type='nll+ssim+iou'
-python main.py --model_type='SK-SAFS' --conv_type='sk' --loss_type='nll+ssim+iou'
-# python main.py --model_type='SE-SAFS' --reduction_ratio=8 --att_mode='se' --loss_type='nll+ssim+iou' --is_scale_selective='0'
-# python main.py --model_type='CBAM-SAFS' --reduction_ratio=8 --att_mode='cbam' --loss_type='nll+ssim+iou' --is_scale_selective='0'
-# python main.py --model_type='BAM-SAFS' --reduction_ratio=8 --att_mode='bam' --loss_type='nll+ssim+iou' --is_scale_selective='0'
-# python main.py --model_type='SK-SAFS' --conv_type='sk' --loss_type='nll+ssim+iou' --is_scale_selective='0'
-python main.py --model_type='SAFS' --loss_type='nll+ssim+iou'
-# python main.py --model_type='SAFS' --loss_type='nll+ssim+iou' --is_scale_selective='0'
+# CUDA_VISIBLE_DEVICES=0 python main.py --model_type='SE-SAFS' --reduction_ratio=8 --att_mode='se' --loss_type='nll+ssim+iou'
+# python main.py --model_type='CBAM-SAFS' --reduction_ratio=8 --att_mode='cbam' --loss_type='nll+ssim+iou'
+# python main.py --model_type='BAM-SAFS' --reduction_ratio=8 --att_mode='bam' --loss_type='nll+ssim+iou'
+# python main.py --model_type='SK-SAFS' --conv_type='sk' --loss_type='nll+ssim+iou'
+python main.py --model_type='SE-SAFS' --reduction_ratio=8 --att_mode='se' --loss_type='nll+ssim+iou' --is_scale_selective='0'
+python main.py --model_type='CBAM-SAFS' --reduction_ratio=8 --att_mode='cbam' --loss_type='nll+ssim+iou' --is_scale_selective='0'
+python main.py --model_type='BAM-SAFS' --reduction_ratio=8 --att_mode='bam' --loss_type='nll+ssim+iou' --is_scale_selective='0'
+python main.py --model_type='SK-SAFS' --conv_type='sk' --loss_type='nll+ssim+iou' --is_scale_selective='0'
+# python main.py --model_type='SAFS' --loss_type='nll+ssim+iou'
+python main.py --model_type='SAFS' --loss_type='nll+ssim+iou' --is_scale_selective='0'
 # python main.py --model_type='UNet' --loss_type='nll+ssim+iou' --is_scale_selective='0' --n_head=1
 # python main.py --model_type='SE-SAFS' --reduction_ratio=8 --att_mode='se' --loss_type='nll+ssim+iou' --is_scale_selective='0' --n_head=1
 # python main.py --model_type='CBAM-SAFS' --reduction_ratio=8 --att_mode='cbam' --loss_type='nll+ssim+iou' --is_scale_selective='0' --n_head=1
