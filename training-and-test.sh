@@ -30,6 +30,7 @@ python main.py --model_type='BAM-SAFS' --reduction_ratio=8 --att_mode='bam' --lo
 python main.py --model_type='SK-SAFS' --conv_type='sk' --loss_type='nll+ssim+iou' --is_scale_selective='0'
 # python main.py --model_type='SAFS' --loss_type='nll+ssim+iou'
 python main.py --model_type='SAFS' --loss_type='nll+ssim+iou' --is_scale_selective='0'
+python main.py --model_type='SASK' --conv_type='sk'
 # python main.py --model_type='UNet' --loss_type='nll+ssim+iou' --is_scale_selective='0' --n_head=1
 # python main.py --model_type='SE-SAFS' --reduction_ratio=8 --att_mode='se' --loss_type='nll+ssim+iou' --is_scale_selective='0' --n_head=1
 # python main.py --model_type='CBAM-SAFS' --reduction_ratio=8 --att_mode='cbam' --loss_type='nll+ssim+iou' --is_scale_selective='0' --n_head=1
