@@ -36,7 +36,7 @@ MoNuSeg 2018 https://monuseg.grand-challenge.org/Data/
 ![fives](/results/fives_output.png)
 
 ## nuclei segmentation
-![monuseg](monuseg_output.png)
+![monuseg](/results/monuseg_output.png)
 
 ...
 
