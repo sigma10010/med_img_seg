@@ -9,7 +9,7 @@ from .cbam import CBAM
 from .se import SELayer
 
 from .sk import SKConv
-from .safs import SAFS
+from .safs import SAFS, SAFF, SAFS_X
 from .appearance_network import AppearanceNetwork
 from .transunet import SkipAttention
 
@@ -209,8 +209,9 @@ class UNet(nn.Module):
         self.n_skip = n_skip # [1/16,1/8,1/4,1/2,1] [0,1,2,3,4], must <=self.network_depth-1
         self.n_head = n_head
         self.is_scale_selective = is_scale_selective
-        self.ss = SAFS(M=self.n_head, ch_in=init_features, r=8)
+        self.ss = SAFS_X(M=self.n_head, ch_in=init_features, r=8)
         self.scale_att = SkipAttention(init_features, init_features, init_features)
+        self.saff = SAFF(ch_out=init_features, reduction_ratio=8)
         
         decoder_channel_counts = [] # [512,256,128,64,32] [1/16,1/8,1/4,1/2,1]
 
@@ -277,6 +278,8 @@ class UNet(nn.Module):
                 
         if self.is_scale_selective:
             x_seg = self.seg_head(self.ss(x_heads))
+            # x_seg = self.seg_head(self.saff(x_heads))
+            
         else:
             # print(len(x_heads), 'doing satt')
             # x_seg = self.seg_head(self.scale_att(x_heads[0], x_heads[1]))

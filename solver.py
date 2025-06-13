@@ -107,7 +107,7 @@ class Solver(object):
             self.unet = AttU_Net(img_ch=3, n_classes = self.n_classes)
         elif self.model_type == 'R2AttU_Net':
             self.unet = R2AttU_Net(img_ch=3,t=self.t, n_classes = self.n_classes)
-        elif self.model_type in ['UNet','SAFS','SASK','BAM','SE','CBAM', 'BAM-SAFS','CBAM-SAFS','SE-SAFS','SK-SAFS', 'SK-BAM-SAFS', 'SK-SE-SAFS']:
+        elif self.model_type in ['UNet','SAFS','SAFS_X','SASK','BAM','SE','CBAM', 'BAM-SAFS','CBAM-SAFS','SE-SAFS','SK-SAFS', 'SK-BAM-SAFS', 'SK-SE-SAFS']:
             self.unet = UNet(n_classes=self.n_classes, \
                 init_features=self.width, \
                 reduction_ratio=self.reduction_ratio, \
